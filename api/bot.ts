@@ -9,8 +9,8 @@ const bot = new Bot(token);
 bot.command("start", (ctx) =>
   ctx.reply("Welcome! Up and running.", {
     reply_markup: new Keyboard().webApp(
-      "webApp",
-      "https://learnton.github.io/twa-vite/"
+      "ton-webapp",
+      "https://learnton.github.io/ton-webapp/"
     ),
   })
 );
