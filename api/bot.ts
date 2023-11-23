@@ -16,7 +16,7 @@ bot.command("start", (ctx) =>
 );
 // 处理其他的消息。
 bot.on("message", (ctx) => {
-  switch (ctx.message) {
+  switch (ctx.message.text) {
     case "clear":
       ctx.reply("will clear keyboard", {
         reply_markup: { remove_keyboard: true },
@@ -24,7 +24,7 @@ bot.on("message", (ctx) => {
 
       break;
     default:
-      ctx.reply("Got:" + ctx.message);
+      ctx.reply("Got:" + ctx.message.text);
   }
 });
 
