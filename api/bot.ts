@@ -38,7 +38,7 @@ bot.on("message", (ctx) => {
       break;
     case "card2":
       ctx.reply(
-        `<b>Membership Card</b>
+        `<b>Membership Card</b> with message
         <a href="https://grammy.dev/images/grammY.png"></a>`,
         {
           parse_mode: "HTML",
@@ -61,11 +61,11 @@ bot.inlineQuery(/test1/, async (ctx) => {
       "Check this card",
       "https://card.zkid.app/"
     ),
-  }).photo("id-0", "https://grammy.dev/images/grammY.png", {
-    title: "test title",
-    description: "test description",
-    caption: "test caption",
-  });
+  }).text(
+    `<b>Membership Card</b> with inlineQuery
+  <a href="https://grammy.dev/images/grammY.png"></a>`,
+    { parse_mode: "html", disable_web_page_preview: false }
+  );
 
   // 回复 inline query.
   await ctx.answerInlineQuery([result]);
