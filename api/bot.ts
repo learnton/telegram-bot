@@ -14,7 +14,7 @@ bot.command("start", (ctx) =>
   ctx.reply("Welcome! Up and running.", {
     reply_markup: new InlineKeyboard().webApp(
       "ton-webapp",
-      "https://learnton.github.io/ton-webapp/"
+      "https://ton.zkid.xyz/"
     ),
   })
 );
@@ -22,7 +22,7 @@ bot.command("card", (ctx) =>
   ctx.reply("Want show your card?", {
     reply_markup: new InlineKeyboard().webApp(
       "pick a card first",
-      "https://ton.zkid.app/cards"
+      "https://ton.zkid.xyz/cards"
     ),
   })
 );
