@@ -40,33 +40,25 @@ bot.on("message", (ctx) => {
         }
       );
       break;
-    case "card2":
-      ctx.reply(
-        `<b>Membership Card</b> with message
-        <img src="https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png" />`,
-        {
-          parse_mode: "HTML",
-          reply_markup: new InlineKeyboard().url(
-            "Check this card",
-            "https://card.zkid.app/"
-          ),
-        }
-      );
-      break;
+
     default:
   }
 });
 
-bot.inlineQuery(/test1/, async (ctx) => {
-  const result = InlineQueryResultBuilder.article("id:test1", "test1", {
-    reply_markup: new InlineKeyboard().url(
-      "Check this card",
-      "https://card.zkid.app/"
-    ),
-  }).text(
-    `<b>Membership Card</b> with inlineQuery
-  <a href="https://grammy.dev/images/grammY.png"></a>`,
-    { parse_mode: "HTML", disable_web_page_preview: false }
+bot.inlineQuery(/card/, async (ctx) => {
+  const result = InlineQueryResultBuilder.photo(
+    "id:test1",
+    "https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png",
+    {
+      title: "Card",
+      caption: "<b>Membership Card</b>",
+      description: "Membership Card description",
+      parse_mode: "HTML",
+      reply_markup: new InlineKeyboard().url(
+        "Check this card",
+        "https://card.zkid.app/"
+      ),
+    }
   );
 
   // 回复 inline query.
