@@ -18,6 +18,14 @@ bot.command("start", (ctx) =>
     ),
   })
 );
+bot.command("card", (ctx) =>
+  ctx.reply("Want show your card?", {
+    reply_markup: new InlineKeyboard().webApp(
+      "pick a card first",
+      "https://ton.zkid.app/cards"
+    ),
+  })
+);
 // 处理其他的消息。
 bot.on("message", (ctx) => {
   switch (ctx.message.text) {
