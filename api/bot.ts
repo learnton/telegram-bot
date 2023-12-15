@@ -27,6 +27,14 @@ bot.on("message", (ctx) => {
       });
 
       break;
+    case "card":
+      ctx.replyWithPhoto("https://grammy.dev/images/grammY.png", {
+        reply_markup: new InlineKeyboard().url(
+          "Check this card",
+          "https://card.zkid.app/"
+        ),
+      });
+      break;
     default:
       ctx.reply("Got:" + ctx.message.text);
   }
