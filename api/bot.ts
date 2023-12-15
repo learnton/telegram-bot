@@ -29,14 +29,26 @@ bot.on("message", (ctx) => {
       break;
     case "card":
       ctx.replyWithPhoto("https://grammy.dev/images/grammY.png", {
-        title: "Membership",
-        description: "test description",
         caption: "test caption",
         reply_markup: new InlineKeyboard().url(
           "Check this card",
           "https://card.zkid.app/"
         ),
       });
+      break;
+    case "card2":
+      ctx.reply(
+        `<b>Membership Card</b>
+        <a href="https://grammy.dev/images/grammY.png"></a>`,
+        {
+          parse_mode: "HTML",
+          disable_web_page_preview: false,
+          reply_markup: new InlineKeyboard().url(
+            "Check this card",
+            "https://card.zkid.app/"
+          ),
+        }
+      );
       break;
     default:
       ctx.reply("Got:" + ctx.message.text);
