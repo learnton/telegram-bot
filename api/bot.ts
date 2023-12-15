@@ -32,17 +32,13 @@ bot.on("message", (ctx) => {
   }
 });
 
-bot.inlineQuery(/test1 (framework|library)/, async (ctx) => {
-  const result = InlineQueryResultBuilder.article(
-    "id:show-proof",
-    "Show proof",
-    {
-      reply_markup: new InlineKeyboard().url(
-        "Check this card",
-        "https://card.zkid.app/"
-      ),
-    }
-  ).photo("id-0", "https://grammy.dev/images/grammY.png", {
+bot.inlineQuery(/test1/, async (ctx) => {
+  const result = InlineQueryResultBuilder.article("id:test1", "test1", {
+    reply_markup: new InlineKeyboard().url(
+      "Check this card",
+      "https://card.zkid.app/"
+    ),
+  }).photo("id-0", "https://grammy.dev/images/grammY.png", {
     title: "test title",
     description: "test description",
     caption: "test caption",
