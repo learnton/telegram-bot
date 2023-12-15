@@ -49,24 +49,7 @@ bot.inlineQuery(/test1/, async (ctx) => {
 });
 
 bot.on("inline_query", async (ctx) => {
-  // 创建一个单独的 inline query 结果。
-  const result = InlineQueryResultBuilder.article(
-    "id:show-proof",
-    "Show proof",
-    {
-      reply_markup: new InlineKeyboard().url(
-        "Check this card",
-        "https://card.zkid.app/"
-      ),
-    }
-  ).photo("id-0", "https://grammy.dev/images/grammY.png", {
-    title: "test title",
-    description: "test description",
-    caption: "test caption",
-  });
-
-  // 回复 inline query.
-  await ctx.answerInlineQuery([result]);
+  await ctx.answerInlineQuery([]);
 });
 
 export default bot;
