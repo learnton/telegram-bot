@@ -1,8 +1,4 @@
-import {
-  Bot,
-  InlineKeyboard,
-  InlineQueryResultBuilder,
-} from "https://deno.land/x/grammy@v1.8.3/mod.ts";
+import { Bot, InlineKeyboard, InlineQueryResultBuilder } from "grammy";
 
 const token = Deno.env.get("BOT_TOKEN") || "";
 if (!token) throw new Error("BOT_TOKEN is unset");
