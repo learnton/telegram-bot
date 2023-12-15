@@ -33,6 +33,7 @@ bot.on("message", (ctx) => {
 });
 
 bot.on("inline_query", async (ctx) => {
+  console.log("inline query:", ctx.inlineQuery.query);
   // 创建一个单独的 inline query 结果。
   const result = InlineQueryResultBuilder.article(
     "id:grammy-website",
