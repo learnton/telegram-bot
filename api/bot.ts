@@ -1,6 +1,6 @@
 import {
   Bot,
-  InlineKeyboard,
+  Keyboard,
   InlineQueryResultBuilder,
 } from "https://deno.land/x/grammy@v1.19.2/mod.ts";
 
@@ -10,9 +10,15 @@ if (!token) throw new Error("BOT_TOKEN is unset");
 const bot = new Bot(token);
 
 // 处理 /start 命令。
+bot.api.setMyCommands([
+  { command: "start", description: "Start the bot" },
+  { command: "card", description: "Want show your card?" },
+  { command: "share", description: "Share for test" },
+]);
+
 bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 bot.command("card", (ctx) => {
-  const keyboard = new InlineKeyboard().webApp(
+  const keyboard = new Keyboard().webApp(
     "pick a card",
     "https://ton.zkid.xyz/cards"
   );
@@ -20,6 +26,13 @@ bot.command("card", (ctx) => {
     reply_markup: keyboard,
   });
 });
+bot.command("share", (ctx) => {
+  const keyboard = new Keyboard().requestChat("pick a group", "id:chat");
+  ctx.reply("Pick a group", {
+    reply_markup: keyboard,
+  });
+});
+
 // 处理其他的消息。
 bot.on("message", (ctx) => {
   switch (ctx.message.text) {
@@ -29,7 +42,7 @@ bot.on("message", (ctx) => {
         {
           caption: "<b>Membership Card</b>",
           parse_mode: "HTML",
-          reply_markup: new InlineKeyboard().url(
+          reply_markup: new Keyboard().url(
             "Check this card",
             "https://card.zkid.app/"
           ),
@@ -38,6 +51,7 @@ bot.on("message", (ctx) => {
       break;
 
     default:
+      ctx.reply("get:" + ctx.message.text);
   }
 });
 
@@ -48,7 +62,7 @@ bot.inlineQuery(/card/, async (ctx) => {
     {
       caption: "<b>Membership Card</b>",
       parse_mode: "HTML",
-      reply_markup: new InlineKeyboard().url(
+      reply_markup: new Keyboard().url(
         "Check this card",
         "https://card.zkid.app/"
       ),
