@@ -33,22 +33,21 @@ bot.on("message", (ctx) => {
 });
 
 bot.on("inline_query", async (ctx) => {
-  console.log("inline query:", ctx.inlineQuery.query);
   // 创建一个单独的 inline query 结果。
   const result = InlineQueryResultBuilder.article(
-    "id:grammy-website",
-    "grammY",
+    "id:show-proof",
+    "Show proof",
     {
       reply_markup: new InlineKeyboard().url(
-        "grammY website",
-        "https://grammy.dev/"
+        "Check this card",
+        "https://card.zkid.app/"
       ),
     }
-  ).text(
-    `<b>grammY</b> is the best way to create your own Telegram bots.
-They even have a pretty website! 👇`,
-    { parse_mode: "HTML" }
-  );
+  ).photo("id-0", "https://grammy.dev/images/grammY.png", {
+    title: "test title",
+    description: "test description",
+    caption: "test caption",
+  });
 
   // 回复 inline query.
   await ctx.answerInlineQuery(
