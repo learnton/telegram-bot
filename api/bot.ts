@@ -27,7 +27,7 @@ bot.command("card", (ctx) => {
   });
 });
 bot.command("share", (ctx) => {
-  const keyboard = new Keyboard().requestChat("pick a group", "id:chat");
+  const keyboard = new Keyboard().requestChat("pick a group", 312231);
   ctx.reply("Pick a group", {
     reply_markup: keyboard,
   });
