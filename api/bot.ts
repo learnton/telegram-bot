@@ -29,6 +29,9 @@ bot.on("message", (ctx) => {
       break;
     case "card":
       ctx.replyWithPhoto("https://grammy.dev/images/grammY.png", {
+        title: "Membership",
+        description: "test description",
+        caption: "test caption",
         reply_markup: new InlineKeyboard().url(
           "Check this card",
           "https://card.zkid.app/"
