@@ -28,21 +28,24 @@ bot.on("message", (ctx) => {
 
       break;
     case "card":
-      ctx.replyWithPhoto("https://grammy.dev/images/grammY.png", {
-        caption: "test caption",
-        reply_markup: new InlineKeyboard().url(
-          "Check this card",
-          "https://card.zkid.app/"
-        ),
-      });
+      ctx.replyWithPhoto(
+        "https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png",
+        {
+          caption: "<b>Membership Card</b>",
+          parse_mode: "HTML",
+          reply_markup: new InlineKeyboard().url(
+            "Check this card",
+            "https://card.zkid.app/"
+          ),
+        }
+      );
       break;
     case "card2":
       ctx.reply(
         `<b>Membership Card</b> with message
-        <a href="https://grammy.dev/images/grammY.png"></a>`,
+        <img src="https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png" />`,
         {
           parse_mode: "HTML",
-          disable_web_page_preview: false,
           reply_markup: new InlineKeyboard().url(
             "Check this card",
             "https://card.zkid.app/"
@@ -51,7 +54,6 @@ bot.on("message", (ctx) => {
       );
       break;
     default:
-      ctx.reply("Got:" + ctx.message.text);
   }
 });
 
@@ -64,7 +66,7 @@ bot.inlineQuery(/test1/, async (ctx) => {
   }).text(
     `<b>Membership Card</b> with inlineQuery
   <a href="https://grammy.dev/images/grammY.png"></a>`,
-    { parse_mode: "html", disable_web_page_preview: false }
+    { parse_mode: "HTML", disable_web_page_preview: false }
   );
 
   // 回复 inline query.
