@@ -57,6 +57,7 @@ bot.on("message", (ctx) => {
       break;
 
     default:
+      console.log("get:", ctx);
       ctx.reply("get:" + ctx.message.text);
   }
 });
