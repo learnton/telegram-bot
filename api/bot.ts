@@ -70,7 +70,7 @@ bot.inlineQuery(/template/, async (ctx) => {
   );
 
   // 回复 inline query.
-  await ctx.answerInlineQuery([cards]);
+  await ctx.answerInlineQuery(cards);
 });
 
 bot.on("inline_query", async (ctx) => {
