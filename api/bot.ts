@@ -1,6 +1,6 @@
 import {
   Bot,
-  Keyboard,
+  InlineKeyboard,
   InlineQueryResultBuilder,
 } from "https://deno.land/x/grammy@v1.19.2/mod.ts";
 
@@ -18,7 +18,7 @@ bot.api.setMyCommands([
 
 bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 bot.command("card", (ctx) => {
-  const keyboard = new Keyboard().webApp(
+  const keyboard = new InlineKeyboard().webApp(
     "pick a card",
     "https://ton.zkid.xyz/cards"
   );
@@ -27,7 +27,7 @@ bot.command("card", (ctx) => {
   });
 });
 bot.command("share", (ctx) => {
-  const keyboard = new Keyboard().requestChat("pick a group", 312231);
+  const keyboard = new InlineKeyboard().requestChat("pick a group", 312231);
   ctx.reply("Pick a group", {
     reply_markup: keyboard,
   });
@@ -42,7 +42,7 @@ bot.on("message", (ctx) => {
         {
           caption: "<b>Membership Card</b>",
           parse_mode: "HTML",
-          reply_markup: new Keyboard().url(
+          reply_markup: new InlineKeyboard().url(
             "Check this card",
             "https://card.zkid.app/"
           ),
@@ -62,7 +62,7 @@ bot.inlineQuery(/card/, async (ctx) => {
     {
       caption: "<b>Membership Card</b>",
       parse_mode: "HTML",
-      reply_markup: new Keyboard().url(
+      reply_markup: new InlineKeyboard().url(
         "Check this card",
         "https://card.zkid.app/"
       ),
