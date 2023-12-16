@@ -65,7 +65,7 @@ bot.inlineQuery(/template/, async (ctx) => {
   const cards = cardRes.data.items
     .filter((item) => !!item.background)
     .map((item) => InlineQueryResultBuilder.photo(item.id, item.background));
-
+  console.log("get cards:", cards.length);
   // 回复 inline query.
   await ctx.answerInlineQuery(cards);
 });
