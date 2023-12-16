@@ -7,6 +7,8 @@ import {
 const token = Deno.env.get("BOT_TOKEN") || "";
 if (!token) throw new Error("BOT_TOKEN is unset");
 
+import cardRes from "../static/cards.ts";
+
 const bot = new Bot(token);
 
 // 处理 /start 命令。
@@ -55,22 +57,17 @@ bot.on("message", (ctx) => {
   }
 });
 
-bot.inlineQuery(/card/, async (ctx) => {
-  const result = InlineQueryResultBuilder.photo(
-    "id:test1",
-    "https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png",
-    {
-      caption: "<b>Membership Card</b>",
-      parse_mode: "HTML",
-      reply_markup: new InlineKeyboard().url(
-        "Check this card",
-        "https://card.zkid.app/"
-      ),
-    }
+bot.inlineQuery(/template/, async (ctx) => {
+  const cards = cardRes.data.items.map(
+    (item) =>
+      new InlineQueryResultBuilder.photo(item.id, item.background, {
+        caption: "<b>" + item.title + "</b>",
+        parse_mode: "HTML",
+      })
   );
 
   // 回复 inline query.
-  await ctx.answerInlineQuery([result]);
+  await ctx.answerInlineQuery([cards]);
 });
 
 bot.on("inline_query", async (ctx) => {
