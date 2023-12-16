@@ -62,12 +62,9 @@ bot.on("message", (ctx) => {
 });
 
 bot.inlineQuery(/template/, async (ctx) => {
-  const cards = cardRes.data.items.map((item) =>
-    InlineQueryResultBuilder.photo(item.id, item.background, {
-      caption: "<b>" + item.title + "</b>",
-      parse_mode: "HTML",
-    })
-  );
+  const cards = cardRes.data.items
+    .filter((item) => !!item.background)
+    .map((item) => InlineQueryResultBuilder.photo(item.id, item.background));
 
   // 回复 inline query.
   await ctx.answerInlineQuery(cards);
