@@ -1,5 +1,6 @@
 import {
   Bot,
+  Keyboard,
   InlineKeyboard,
   InlineQueryResultBuilder,
 } from "https://deno.land/x/grammy@v1.19.2/mod.ts";
@@ -29,7 +30,10 @@ bot.command("card", (ctx) => {
   });
 });
 bot.command("share", (ctx) => {
-  const keyboard = new InlineKeyboard().requestChat("pick a group", 312231);
+  const keyboard = new Keyboard()
+    .requestChat("pick a group", 312231)
+    .resized()
+    .oneTime();
   ctx.reply("Pick a group", {
     reply_markup: keyboard,
   });
@@ -58,12 +62,11 @@ bot.on("message", (ctx) => {
 });
 
 bot.inlineQuery(/template/, async (ctx) => {
-  const cards = cardRes.data.items.map(
-    (item) =>
-      new InlineQueryResultBuilder.photo(item.id, item.background, {
-        caption: "<b>" + item.title + "</b>",
-        parse_mode: "HTML",
-      })
+  const cards = cardRes.data.items.map((item) =>
+    InlineQueryResultBuilder.photo(item.id, item.background, {
+      caption: "<b>" + item.title + "</b>",
+      parse_mode: "HTML",
+    })
   );
 
   // 回复 inline query.
