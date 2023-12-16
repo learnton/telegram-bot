@@ -65,15 +65,13 @@ bot.inlineQuery(/template/, async (ctx) => {
   const cards = cardRes.data.items
     .filter((item) => !!item.background)
     .map((item) =>
-      InlineQueryResultBuilder.photo(item.id, item.background).text(
-        `${item.title}`,
-        {
-          reply_markup: new InlineKeyboard().url(
-            "Check this card",
-            "https://card.zkid.app/"
-          ),
-        }
-      )
+      InlineQueryResultBuilder.photo(item.id, item.background, {
+        thumbnail_url: item.background,
+        reply_markup: new InlineKeyboard().url(
+          "Check this card",
+          "https://card.zkid.app/"
+        ),
+      })
     );
   console.log("get cards:", cards.length);
   // 回复 inline query.
