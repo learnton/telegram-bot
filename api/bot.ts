@@ -58,6 +58,21 @@ bot.on("message", (ctx) => {
 
     default:
       console.log("get:", ctx);
+      const chatId = ctx.update?.message.chat_shared?.chat_id;
+      if (chatId) {
+        ctx.api.sendPhoto(
+          chatId,
+          "https://zcloak.s3.us-east-2.amazonaws.com/prod/1694514129471_mEMGaae66Z.png",
+          {
+            caption: "<b color='green'>Membership Card</b>",
+            parse_mode: "HTML",
+            reply_markup: new InlineKeyboard().url(
+              "Check this card",
+              "https://card.zkid.app/#/shop/30"
+            ),
+          }
+        );
+      }
       ctx.reply("get:" + ctx.message.text);
   }
 });
