@@ -49,7 +49,7 @@ bot.on("message", (ctx) => {
           caption: "<b>Membership Card</b>",
           parse_mode: "HTML",
           reply_markup: new InlineKeyboard().url(
-            "Check this card",
+            "Check out this card on CardCenter",
             "https://card.zkid.app/"
           ),
         }
@@ -67,7 +67,7 @@ bot.on("message", (ctx) => {
             caption: "<b color='green'>Membership Card</b>",
             parse_mode: "HTML",
             reply_markup: new InlineKeyboard().url(
-              "Check this card",
+              "Check out this card on CardCenter",
               "https://card.zkid.app/#/shop/30"
             ),
           }
@@ -84,7 +84,7 @@ bot.inlineQuery(/template/, async (ctx) => {
       InlineQueryResultBuilder.photo(item.id, item.background, {
         thumbnail_url: item.background,
         reply_markup: new InlineKeyboard().url(
-          "Check this card",
+          "Check out this card on CardCenter",
           "https://card.zkid.app/"
         ),
       })
