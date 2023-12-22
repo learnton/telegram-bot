@@ -21,10 +21,10 @@ bot.api.setMyCommands([
 
 bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 bot.command("card", (ctx) => {
-  const keyboard = new Keyboard().webApp(
-    "pick a card",
-    "https://ton.zkid.xyz/pickcard"
-  );
+  const keyboard = new Keyboard()
+    .webApp("pick a card", "https://ton.zkid.xyz/pickcard")
+    .resized()
+    .oneTime();
   ctx.reply("Want show your card?", {
     reply_markup: keyboard,
   });
