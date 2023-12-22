@@ -23,7 +23,7 @@ bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 bot.command("card", (ctx) => {
   const keyboard = new InlineKeyboard().webApp(
     "pick a card",
-    "https://ton.zkid.xyz/cards"
+    "https://ton.zkid.xyz/pickcard"
   );
   ctx.reply("Want show your card?", {
     reply_markup: keyboard,
