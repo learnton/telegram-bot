@@ -21,7 +21,7 @@ bot.api.setMyCommands([
 
 bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 bot.command("card", (ctx) => {
-  const keyboard = new InlineKeyboard().webApp(
+  const keyboard = new Keyboard().webApp(
     "pick a card",
     "https://ton.zkid.xyz/pickcard"
   );
