@@ -14,7 +14,7 @@ const bot = new Bot(token);
 
 // 处理 /start 命令。
 bot.api.setMyCommands([
-  { command: "start", description: "Start the bot" },
+  { command: "wallet", description: "open wallet" },
   { command: "card", description: "Want show your card?" },
   { command: "share", description: "Share for test" },
 ]);
